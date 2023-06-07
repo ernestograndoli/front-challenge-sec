@@ -166,8 +166,7 @@ export default function ExchangeRateSetting(props: IProps) {
           <div className="mt-1 pt-2 w-100">
             <>
               <label htmlFor="name" className="form-label">
-                Currency value{" "}
-                {!showEdit && <span className="text-danger">*</span>}
+                Rate value {!showEdit && <span className="text-danger">*</span>}
               </label>
               <label className="ms-1 mb-0 text-danger">
                 {errors.value && (

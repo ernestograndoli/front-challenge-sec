@@ -1,7 +1,9 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import { toast } from "react-toastify";
+import WalletApi from "@/services/WalletApi";
 import Alert from "@/components/Alert";
 import ExchangeRateSetting from "@/components/ExchangeRateSetting";
 import BalanceView from "@/components/BalanceView";
@@ -11,6 +13,19 @@ export default function ExchangeRate() {
     useState<number>();
   const [rate, setRate] = useState<number>(0);
   const params = useParams();
+  const [isOldWallet, setIsOldWallet] = useState<boolean>();
+
+  useEffect(() => {
+    WalletApi.isOldWallet(params.addressWallet).then((response: any) => {
+      const { status, data } = response;
+
+      if (status === 200) {
+        setIsOldWallet(data);
+      } else {
+        toast.error("error checking wallet age");
+      }
+    });
+  }, []);
 
   return (
     <section id="exchangeRate" className="pt-5">
@@ -25,11 +40,13 @@ export default function ExchangeRate() {
             </Link>
           </div>
         </div>
-        <div className="row">
-          <div className="col-12 mt-1">
-            <Alert />
+        {isOldWallet && (
+          <div className="row">
+            <div className="col-12 mt-1">
+              <Alert type={"danger"} text={"Wallet is old!"} />
+            </div>
           </div>
-        </div>
+        )}
         <div className="row">
           <div className="col-12 col-md-6">
             <ExchangeRateSetting

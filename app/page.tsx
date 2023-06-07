@@ -74,7 +74,6 @@ export default function Home() {
   };
 
   const handlerNewWallet = (response: any) => {
-    console.log("response: ", response);
     if (response.status === 200) {
       const aux = [...wallet!, response.data];
       setWallet(aux);
@@ -86,6 +85,24 @@ export default function Home() {
 
   const handlerShowModal = () => {
     setShowFormWallet(!showFormWallet);
+  };
+
+  const deleteWallet = (walletSelected: IWallet) => {
+    const address = walletSelected.address;
+
+    try {
+      WalletApi.delete(address).then((response: any) => {
+        const auxWallet = [...wallet!];
+        const walletIndex = wallet!.indexOf(
+          wallet!.find((i) => i.id === walletSelected!.id) || walletSelected
+        );
+        auxWallet.splice(walletIndex, 1);
+        setWallet(auxWallet);
+        toast.success("Wallet removed successfully.");
+      });
+    } catch (e) {
+      console.log("Error adding wallet to favourite", e);
+    }
   };
 
   return (
@@ -182,6 +199,7 @@ export default function Home() {
                               <i
                                 className={`text-danger bi bi-trash`}
                                 style={{ fontSize: "18px", cursor: "pointer" }}
+                                onClick={() => deleteWallet(wallet)}
                               ></i>
                             </td>
                           </tr>

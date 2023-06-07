@@ -30,9 +30,21 @@ class WalletApi {
     });
   }
 
+  public static async delete(address: string) {
+    return FetchService.delete({
+      url: `${process.env.NEXT_PUBLIC_HOST_SERVICES}/wallet/${address}`,
+    });
+  }
+
   public static async getBalanceCurrency(address: string, rate: number) {
     return FetchService.get({
       url: `${process.env.NEXT_PUBLIC_HOST_SERVICES}/wallet/${address}/balance/${rate}`,
+    });
+  }
+
+  public static async isOldWallet(address: string) {
+    return FetchService.get({
+      url: `${process.env.NEXT_PUBLIC_HOST_SERVICES}/wallet/${address}/isOldWallet`,
     });
   }
 }

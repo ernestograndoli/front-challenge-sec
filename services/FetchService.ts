@@ -56,6 +56,22 @@ class FetchService {
       return "Error: " + error.message;
     }
   }
+
+  public static async delete(params: FetchParams) {
+    const { url, body } = params;
+
+    try {
+      const response = await fetch(url, {
+        method: "DELETE",
+        headers: FetchService.getHeaders(),
+        body: JSON.stringify(body),
+      });
+
+      return response.json();
+    } catch (error: any) {
+      return "Error: " + error.message;
+    }
+  }
 }
 
 export default FetchService;
