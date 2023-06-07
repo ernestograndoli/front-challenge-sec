@@ -8,7 +8,7 @@ export default function Alert() {
         className="bi bi-exclamation-triangle-fill text-danger"
         style={{ fontSize: "1.3rem" }}
       ></i>
-      <span className="fw-bold ms-2">Wallet is old!</span>
+      <span className="fw-bold ms-2 fs-5">Wallet is old!</span>
     </div>
   );
 }

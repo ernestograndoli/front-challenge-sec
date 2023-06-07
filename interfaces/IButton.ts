@@ -4,7 +4,7 @@ interface IIcon {
 }
 
 interface IButtonType {
-  type: "cancel" | "save" | "edit";
+  type: "cancel" | "submit" | "edit";
   class: "success" | "danger" | "primary";
 }
 

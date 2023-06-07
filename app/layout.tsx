@@ -1,7 +1,10 @@
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import "react-toastify/dist/ReactToastify.css";
 import React from "react";
 import Script from "next/script";
+import Toastify from "@/components/Toastify";
+
 import { Montserrat } from "next/font/google";
 
 const montserratFont = Montserrat({
@@ -22,7 +25,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={montserratFont.className}>
         <React.StrictMode>
-          {children}
+          <Toastify />
+          <main>{children}</main>
           <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" />
         </React.StrictMode>
       </body>
