@@ -1,4 +1,4 @@
-# Challenge-FrontEnd-React (NextJS v13)
+# Challenge-React (NextJS v13)
 
 ## Installation
 
@@ -10,10 +10,10 @@ npm i
 
 ## Run
 
-To run the app you have to execute the next command at cmd/bash .
+To run the app you have to execute the next command at cmd/bash.
 
 ```cmd
 npm run dev
 ```
 
-> The APP will run at http://localhost:3000/
+> The APP will run at http://localhost:3000
