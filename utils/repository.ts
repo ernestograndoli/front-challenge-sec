@@ -10,9 +10,9 @@ const currencyEUFormat = Intl.NumberFormat("es-ES", {
 
 export const formatToCurrency = (amount: number, currency: string) => {
   switch (currency) {
-    case "Euro":
+    case "EUR":
       return currencyEUFormat.format(amount);
-    case "USDollar":
+    case "USD":
       return currencyUSDFormat.format(amount);
     default:
       return currencyUSDFormat.format(amount);

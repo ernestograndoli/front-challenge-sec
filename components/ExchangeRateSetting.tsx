@@ -56,7 +56,7 @@ export default function ExchangeRateSetting(props: IProps) {
       setIsLoading(true);
       getExchangeRate(idExchangeRateSelected)
         .then((response: any) => {
-          setRate(response.data.value);
+          setRate(response.data.rate);
           setExchangeRate(response.data);
           setIsLoading(false);
         })
@@ -83,7 +83,7 @@ export default function ExchangeRateSetting(props: IProps) {
           const { status, data } = response;
           if (status === 200) {
             setExchangeRate(data);
-            setRate(data.value);
+            setRate(data.rate);
           } else {
             console.log("Setear error: ", data);
           }
@@ -169,19 +169,18 @@ export default function ExchangeRateSetting(props: IProps) {
                 Rate value {!showEdit && <span className="text-danger">*</span>}
               </label>
               <label className="ms-1 mb-0 text-danger">
-                {errors.value && (
+                {errors.rate && (
                   <span>
-                    {errors.value.type == "required" &&
-                      "This field is required"}
+                    {errors.rate.type == "required" && "This field is required"}
                   </span>
                 )}
               </label>
               <input
                 type="number"
                 className="form-control fw-bold fs-2"
-                id="value"
+                id="rate"
                 step=".01"
-                {...register("value", { required: true })}
+                {...register("rate", { required: true })}
                 disabled={!showEdit ? false : true}
               />
             </>

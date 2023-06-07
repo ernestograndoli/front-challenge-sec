@@ -11,7 +11,6 @@ interface IProps {
 const defaultValues: IWallet = {
   id: 0,
   address: "",
-  privatekey: "",
   favourite: false,
 };
 
